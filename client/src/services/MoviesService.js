@@ -22,6 +22,11 @@ class MoviesService {
     return response;
   }
 
+  async addMovie(movie) {
+    const response = await this._createBaseRequest().post('/', movie);
+    return response;
+  }
+
   _createBaseRequest() {
     return axios.create({
       baseURL: 'http://localhost:5000/api/movies',

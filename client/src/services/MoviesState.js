@@ -10,6 +10,7 @@ class MoviesState {
   setMovieEdit;
   setEditing;
   setDeleteMovie;
+  setAddedMovie;
 
   constructor(moviesService) {
     this.moviesService = moviesService;
@@ -43,6 +44,12 @@ class MoviesState {
     await this.moviesService.deleteMovie(id);
     this.setDeleteMovie(false);
   }
+
+  async addMovie(movie) {
+    this.setAddedMovie(true);
+    await this.moviesService.addMovie(movie);
+    this.setAddedMovie(false);
+  };
 
   addToSavedList(movie) {
     this.setSavedList([...this.savedList, movie]);
